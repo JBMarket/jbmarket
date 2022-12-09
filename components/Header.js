@@ -32,9 +32,12 @@ export default function Header() {
               <span className="ml-3 text-xl">중부마켓</span>
             </a>
           </Link>
-          <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            <a className="mr-5 hover:text-gray-900">마켓톡</a>
-          </nav>
+          <Link legacyBehavior href="/talk">
+            <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+              <a className="mr-5 hover:text-gray-900">마켓톡</a>
+            </nav>
+          </Link>
+
           <Link legacyBehavior href="/community">
             <a className="mr-5 hover:text-gray-900">게시판</a>
           </Link>
