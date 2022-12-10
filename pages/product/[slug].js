@@ -18,12 +18,12 @@ export default function ProductdetailScreen({ product }) {
               src="/noimg.png"
             />
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-              <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
+              <h1 className="text-gray-700 text-3xl title-font font-medium mb-1">
                 {product.productname}
               </h1>
               <p className="leading-relaxed">제품 설명</p>
               <div className="flex">
-                <span className="title-font font-medium text-2xl text-gray-900">
+                <span className="title-font font-medium text-2xl text-gray-600">
                   {product.price}원
                 </span>
                 <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">

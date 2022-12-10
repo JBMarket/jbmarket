@@ -3,6 +3,7 @@ import { signOut, useSession } from 'next-auth/react'
 import 'react-toastify/dist/ReactToastify.css'
 import DropdownLink from './DropdownLink'
 import { Menu } from '@headlessui/react'
+import Darkmodebutton from './dark-mode'
 
 export default function Header() {
   const { status, data: session } = useSession()
@@ -13,10 +14,10 @@ export default function Header() {
   }
   return (
     <>
-      <header className="text-gray-600 body-font">
+      <header>
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <Link legacyBehavior href="/">
-            <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+            <a className="flex title-font font-medium items-center  mb-4 md:mb-0">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -33,48 +34,37 @@ export default function Header() {
             </a>
           </Link>
           <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            <a className="mr-5 hover:text-gray-900">마켓톡</a>
+            <a className="mr-5 ">마켓톡</a>
           </nav>
           <Link legacyBehavior href="/community">
-            <a className="mr-5 hover:text-gray-900">게시판</a>
+            <a className="mr-5 ">게시판</a>
           </Link>
           {status === 'loading' ? (
             'Loading'
           ) : session?.user ? (
             <Menu as="div" className="relative inline-block">
-              <Menu.Button className="text-black">
-                {session.user.name}
-              </Menu.Button>
-              <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white shadow-lg">
+              <Menu.Button>{session.user.name}</Menu.Button>
+              <Menu.Items className="absolute right-0 w-56 origin-top-right shadow-lg">
                 <Menu.Item>
-                  <DropdownLink
-                    className="dropdown-link text-black"
-                    href="/profile"
-                  >
+                  <DropdownLink className="dropdown-link" href="/profile">
                     회원정보
                   </DropdownLink>
                 </Menu.Item>
                 <Menu.Item>
-                  <DropdownLink
-                    className="dropdown-link text-black"
-                    href="/order-history"
-                  >
+                  <DropdownLink className="dropdown-link" href="/order-history">
                     주문내역
                   </DropdownLink>
                 </Menu.Item>
                 <Menu.Item>
                   <Link legacyBehavior href="/sell">
-                    <DropdownLink
-                      className="dropdown-link text-black"
-                      href="/sell"
-                    >
+                    <DropdownLink className="dropdown-link " href="/sell">
                       판매물품 등록
                     </DropdownLink>
                   </Link>
                 </Menu.Item>
                 <Menu.Item>
                   <a
-                    className="dropdown-link text-black"
+                    className="dropdown-link "
                     href="#"
                     onClick={logoutClickHandler}
                   >
@@ -85,11 +75,12 @@ export default function Header() {
             </Menu>
           ) : (
             <Link legacyBehavior href="/login">
-              <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
+              <button className="inline-flex items-center border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 mr-5">
                 로그인
               </button>
             </Link>
           )}
+          <Darkmodebutton></Darkmodebutton>
         </div>
       </header>
     </>
